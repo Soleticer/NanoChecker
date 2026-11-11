@@ -35,7 +35,9 @@ jobs:
           gradle-version: '8.9'
 
       - name: Build APK
-        run: gradle :app:assembleDebug --stacktrace
+        run: |
+          sed -i 's/2\.0\.21/2.3.21/g' build.gradle.kts
+          gradle :app:assembleDebug --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
